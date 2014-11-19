@@ -1,0 +1,45 @@
+<md-toolbar class="md-whiteframe-z1">
+  <h1 class="md-toolbar-tools">
+    <md-button>
+      <button class="md-button-inner">
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="md-ripple-container"></div>
+    </md-button>
+    <span>LoanSmart</span>
+  </h1>
+</md-toolbar>
+
+<md-content style="height: 600px;">
+  <section>
+    <md-subheader class="md-primary">Loan List</md-subheader>
+    <md-list>
+      <md-item ng-repeat="bank in banks">
+        <md-item-content>
+          <div class="md-tile-left circle-text">
+              <div>{{initial(bank.name)}}</div>
+          </div>
+
+          <div class="tile-emi md-tile-content">
+            <h3>{{bank.emi}}</h3>
+            <p>
+              per month
+            </p>
+          </div>
+
+          <div class="md-tile-content">
+            <h3>{{bank.rate}}%</h3>
+            <p>
+              {{bank.rateType}}
+            </p>
+          </div>
+
+          <div class="md-tile-right">
+            <md-checkbox></md-checkbox>
+          </div>
+        </md-item-content>
+        <md-divider inset ng-if="!$last"></md-divider>
+      </md-item>
+    </md-list>
+  </section>
+</md-content>

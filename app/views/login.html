@@ -1,0 +1,32 @@
+<md-content class="login" layout="vertical" layout-align="center center">
+  <md-content class="welcome">
+    <div class="text">Welcome to</div>
+    <div class="title">LoanSmart</div>
+  </md-content>
+
+  <md-content>
+    <form ng-submit="addUser(user)">
+      <div class="row">
+        <i class="fa fa-envelope"></i>
+        <md-text-float md-theme="blue-grey" label="Email ID" type="email" ng-model="user.email"></md-text-float>
+      </div>
+      <div class="row">
+        <i class="fa fa-key"></i>
+        <md-text-float md-theme="blue-grey" label="Password" type="password" ng-model="user.password"></md-text-float>
+      </div>
+      
+      <md-button>
+        <button class="md-button-inner">
+          Sign Up
+        </button>
+        <div class="md-ripple-container"></div>
+      </md-button>
+
+        <!-- <md-button type="submit">Sign Up</md-button> -->
+    </form>
+  </md-content>
+
+  <md-content>
+    <div>Already signed up? <a href="">LOGIN</a></div>
+  </md-content>
+</md-content>
