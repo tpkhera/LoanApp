@@ -29,7 +29,7 @@ angular
         templateUrl: 'views/loanlist.html',
         controller: 'LoanlistCtrl'
       })
-      .when('/loanlist/:loanType/loan/:loanID', {
+      .when('/loanlist/:loanType/loanId/:loanID', {
           templateUrl: 'views/loandetails.html',
           controller: 'LoandetailsCtrl'
       })
@@ -44,4 +44,75 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  })
+  .directive('toolbar', function(){
+    return {
+      restrict: 'E',
+
+      controller: function($scope, $location, $mdSidenav) {
+                    var path = $location.path();
+
+                    if (path.indexOf('loanId') > 0) {
+                      $scope.pageProps = {title: 'Loan Details'};
+                    }else if (path.indexOf('loanlist') > 0) {
+                      if (path.indexOf('home') > 0) {
+                        $scope.pageProps = {title: 'Home Loans'};
+                      }else if (path.indexOf('auto') > 0) {
+                        $scope.pageProps = {title: 'Auto Loans'};
+                      }else {
+                        $scope.pageProps = {title: 'Personal Loans'};
+                      }
+                    }else if (path.indexOf('home') > 0) {
+                      $scope.pageProps = {title: 'Loan Smart'};
+                    }else if (path.indexOf('compare') > 0) {
+                      $scope.pageProps = {title: 'Compare Loans'};
+                    }else{
+                      $scope.pageProps = {title: 'EMI Calculator'};
+                    }
+
+                    $scope.toggleLeft = function() {
+                      $mdSidenav('left').toggle();
+                    };
+                  },
+
+      link: function(scope, element) {
+              if (scope.pageProps.title === 'Loan Smart') {
+                element.find('md-toolbar').removeClass('md-whiteframe-z1');
+              }
+            },
+
+      templateUrl: 'views/partials/toolbar.html'
+    };
+  })
+  .factory('sharedProps', ['$http', '$q', function($http, $q) {
+    var service = {};
+    var DATA_URL = 'data/data.json';
+
+    service.getLoans = function() {
+      var deferred = $q.defer(),
+        httpPromise = $http.get(DATA_URL);
+
+      httpPromise.then(function (response) {
+        deferred.resolve(response);
+      }, function (error) {
+        console.error(error);
+      });
+
+      return deferred.promise;
+    };
+
+//    service.getLoanId = function(loanList, loanId){
+//      for (var i = 0; i < loanList.length; i++){
+//        if (loanList[i].id === loanId){
+//          return loanList[i];
+//          break;
+//        }
+//      }
+//    };
+
+    service.calculateEMI = function(p, r, t){
+    	return Math.round(p*r*(1/(1 - (1/Math.pow((1+r), t)))));
+    };
+
+    return service;
+  }]);

@@ -9,19 +9,54 @@
   font-weight: 400;
   src: url("../fonts/Raleway regular.ttf") format('truetype');
 }
-/* Space out content a bit */
-// body {
-//   padding-top: 20px;
-//   padding-bottom: 20px;
-// }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-// .header,
-// .marketing,
-// .footer {
-//   padding-left: 15px;
-//   padding-right: 15px;
-// }
+.slide-right {
+  // transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
+  /* easeOutQuad */
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* easeOutQuad */
+}
+/* line 165, ../sass/ng-animation.scss */
+.slide-right.ng-enter {
+  transform: translateX(160px);
+  transition-duration: 500ms;
+  opacity: 0;
+}
+/* line 171, ../sass/ng-animation.scss */
+.slide-right.ng-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+/* line 176, ../sass/ng-animation.scss */
+.slide-right.ng-leave {
+  transform: scale(1);
+//  transform: translateX(0);
+  transition-duration: 500ms;
+  opacity: 1;
+}
+/* line 182, ../sass/ng-animation.scss */
+.slide-right.ng-leave-active {
+  transform: scale(0.5);
+//  transform: translateX(160px);
+  opacity: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: inherit;
+  height: inherit;
+}
+
+#app {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+}
 
 /* Custom page header */
 // .header {
@@ -35,65 +70,63 @@
 //     padding-bottom: 19px;
 //   }
 // }
-
-// md-content.md-default-theme.login {
-//   background-color: #4285f4;
-// }
 //##################################################################
 //Login
 //##################################################################
 .login.md-default-theme {
-  background-color: #4285f4;
-  
-  md-content {
-    background-color: inherit;
-    padding-top: 25%;
-  }
+  background-color: #2196F3;
+  height: 100%;
 }
 
-.row{
+.row {
   display: flex;
-}
-
-.row > .fa {
-  padding-top: 30px;
-  padding-right: 10px;
+  .fa {
+    font-size: 24px;
+    padding-top: 30px;
+    padding-right: 10px;
+  }
 }
 
 .welcome {
   color: white;
   text-align: center;
+  font-family: "Raleway regular";
 
   .text{
     font-size: 1.5em;
-    font-family: "Raleway regular";
   }
 
   .title{
     font-size: 2em;
-    font-family: "Raleway regular";
-  }  
-  
+  }
 }
 
 //##################################################################
 //Home
 //##################################################################
 .home.md-default-theme {
-  background-color: #4285f4;
+  background-color: #2196F3;
+  height: inherit;
 
   .home-text,
   .home-col {
     text-align: center;
     font-family: "Raleway regular";
-    .fa{
+    .fa {
       color: inherit;
       font-size: 64px;
     }
   }
+
+  md-button.left {
+    border-right: 1px solid #e5e5e5;
+    border-radius: 0px;
+  }
 }
 
-
+//##################################################################
+//LoanList
+//##################################################################
 
 
 md-divider[inset] {
@@ -101,13 +134,28 @@ md-divider[inset] {
   margin-right: 5%;
 }
 
-.fa {
+.md-toolbar-tools i {
   font-size: 24px;
   color: white;
 }
 
-.tile-emi p{
+.fa.fa-rupee {
+  font-size: 18px;
+  color: #666666;
+  padding-right: 3px;
+}
+
+.md-tile-content p, h3{
+  font-family: 'Raleway regular';
   text-align:center;
+}
+
+.search-result{
+  padding-left: 16px;
+}
+
+.shrinkable-toolbar-input > input {
+  width: 80px;
 }
 
 .circle-text:after {
@@ -131,36 +179,34 @@ md-divider[inset] {
   text-align:center;
   color:white;
   font-size: 2em;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-  font-weight: bold; 
+  font-family: "Raleway regular";
+  // font-weight: bold;
 }
 
-/* Custom page footer */
-// .footer {
-//   padding-top: 19px;
-//   color: #777;
-//   border-top: 1px solid #e5e5e5;
-// }
-
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+//@media screen and (min-width: 768px) {
+//  .container {
+//    max-width: 730px;
+//  }
+//
+//  /* Remove the padding we set earlier */
+//  .header,
+//  .marketing,
+//  .footer {
+//    padding-left: 0;
+//    padding-right: 0;
+//  }
+//  /* Space out the masthead */
+//  // .header {
+//  //   margin-bottom: 30px;
+//  // }
+//  /* Remove the bottom border on the jumbotron for visual effect */
+//  .jumbotron {
+//    border-bottom: 0;
+//  }
+//}
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  // .header {
-  //   margin-bottom: 30px;
-  // }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+.logo {
+  font-size: 128px;
+  color: white;
 }

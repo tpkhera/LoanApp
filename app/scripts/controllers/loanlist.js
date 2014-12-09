@@ -8,79 +8,43 @@
  * Controller of the loanAdvisorApp
  */
 angular.module('loanAdvisorApp')
-  .controller('LoanlistCtrl', function ($scope, $route, $routeParams) {
-  	// var loanType = $routeParams.loanType;
+  .controller('LoanlistCtrl', function ($scope, $rootScope, $location, $routeParams, sharedProps) {
 
+    $scope.loans;
 
-  	$scope.loans = [
-		{
-		  id: 'HDFC_01',
-		  name: 'HDFC',
-		  rate: '10',
-		  rateType: 'floating'
-		},
-		{
-		  id: 'AXIS_01',
-		  name: 'AXIS',
-		  rate: '15',
-		  rateType: 'fixed'
-		},
-		{
-		  id: 'SBI_01',
-		  name: 'DHFL',
-		  rate: '12',
-		  rateType: 'floating'
-		},
-		{
-		  id: 'SBI_01',
-		  name: 'PNB',
-		  rate: '17',
-		  rateType: 'fixed'
-		},
-		{
-		  id: 'SBI_01',
-		  name: 'SBI',
-		  rate: '13',
-		  rateType: 'floating'
-		},
-		{
-		  id: 'HDFC_01',
-		  name: 'HDFC',
-		  rate: '10',
-		  rateType: 'floating'
-		},
-		{
-		  id: 'AXIS_01',
-		  name: 'AXIS',
-		  rate: '15',
-		  rateType: 'fixed'
-		},
-		{
-		  id: 'SBI_01',
-		  name: 'DHFL',
-		  rate: '12',
-		  rateType: 'floating'
-		},
-		{
-		  id: 'SBI_01',
-		  name: 'PNB',
-		  rate: '17',
-		  rateType: 'fixed'
-		},
-		{
-		  id: 'SBI_01',
-		  name: 'SBI',
-		  rate: '13',
-		  rateType: 'floating'
-		}
-    ];
+    sharedProps.getLoans()
+    .then(function (response) {
+      $scope.loans = response.data;
+    });
+
+  	$scope.userPref = {
+      principal: $rootScope.principal === undefined ? '2500000' : $rootScope.principal,
+      time: $rootScope.time === undefined ? '15' : $rootScope.time
+  	};
+
+    $scope.tempPref = {
+      principal: $scope.userPref.principal,
+      time: $scope.userPref.time
+    };
+
+    $scope.update = function() {
+      $scope.userPref.principal = $scope.tempPref.principal;
+      $scope.userPref.time = $scope.tempPref.time;
+    };
+
+  	$scope.openDetails = function(loan){
+      $rootScope.principal = $scope.userPref.principal;
+      $rootScope.time = $scope.userPref.time;
+      $rootScope.loan = loan;
+      $location.path('/loanlist/' + $routeParams.loanType + '/loanId/' + loan.id);
+  	};
 
     $scope.initial = function(bankName){
     	return bankName.charAt(0);
     };
 
-    $scope.calcEMI = function(p, r, t){
-    	return p*r*(1/(1 - (1/Math.pow((1+r), t))));
+    $scope.EMI = function(loanRate) {
+      var p = $scope.userPref.principal, r = loanRate/1200, t = $scope.userPref.time*12;
+      return sharedProps.calculateEMI(p, r, t);
     };
-
   });

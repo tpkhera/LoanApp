@@ -1,0 +1,20 @@
+<md-toolbar class="md-whiteframe-z1" style="background-color: #2196F3; z-index: 2">
+  <div class="md-toolbar-tools">
+    <md-button ng-click="toggleLeft()">
+      <i class="fa fa-bars"></i>
+    </md-button>
+    <span flex>{{pageProps.title}}</span>
+    <md-button>
+      <i class="fa fa-ellipsis-v"></i>
+    </md-button>
+  </div>
+</md-toolbar>
+
+
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+  <md-content class="md-padding">
+    <md-button class="md-primary">
+      Close Sidenav Left
+    </md-button>
+  </md-content>
+</md-sidenav>

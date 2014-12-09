@@ -14,20 +14,13 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="styles/ng-animation.css"> -->
     <!-- endbuild -->
   </head>
   <body ng-app="loanAdvisorApp">
 
     <div class="container">
-      <div class="header">
-
-      </div>
-
-      <div ng-view=""></div>
-
-      <div class="footer">
-
-      </div>
+      <div id="app" class="slide-right" ng-view=""></div>
     </div>
 
     <!-- build:js(.) scripts/oldieshim.js -->
@@ -51,10 +44,10 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/home.js"></script>
         <script src="scripts/controllers/loanlist.js"></script>
+        <script src="scripts/controllers/loandetails.js"></script>
         <!-- endbuild -->
 </body>
 </html>

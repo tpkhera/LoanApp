@@ -1,0 +1,24 @@
+<toolbar></toolbar>
+
+<md-content style="height: 89.8%;" layout="column">
+    <div class="loan-details" layout="row" layout-align="center center">
+      <div class="bank-logo" flex="50" layout="column" layout-align="center end">
+        <div class="circle-text" style="width: 80px;">
+          <div>A</div>
+        </div>
+      </div>
+
+      <div class="details" flex>
+        <div><i class="fa fa-rupee"></i> {{principal  | currency:"INR ":"0"}} </div>
+        <div><i class="fa fa-at"></i> {{loan.rate}}% </div>
+        <div><i class="fa fa-bank"></i> {{loan.name}} </div>
+        <div><i class="fa fa-clock-o"></i> {{time}} </div>
+      </div>
+    </div>
+
+    <div class="emi-details">
+      <div class="emi"></div>
+      <div class="time-graph"></div>
+      <div class="get-loan"></div>
+    </div>
+</md-content>
