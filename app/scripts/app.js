@@ -30,13 +30,13 @@ angular
         controller: 'LoanlistCtrl'
       })
       .when('/loanlist/:loanType/loanId/:loanID', {
-          templateUrl: 'views/loandetails.html',
-          controller: 'LoandetailsCtrl'
+        templateUrl: 'views/loandetails.html',
+        controller: 'LoandetailsCtrl'
       })
-      .when('/loanlist/:loanType/compare/:loanIDs', {
-          templateUrl: 'views/comparison.html',
-          controller: 'ComparisonCtrl'
-      })      
+      .when('/loanlist/:loanType/compare', {
+        templateUrl: 'views/compare.html',
+        controller: 'ComparisonCtrl'
+      })
       .when('/emicalc', {
         templateUrl: 'views/emicalculator.html',
         controller: 'EMIcalCtrl'
@@ -45,74 +45,100 @@ angular
         redirectTo: '/'
       });
   })
-  .directive('toolbar', function(){
+  .directive('toolbar', function () {
     return {
       restrict: 'E',
 
-      controller: function($scope, $location, $mdSidenav) {
-                    var path = $location.path();
+      controller: function ($scope, $location, $window, $mdSidenav) {
+        var path = $location.path();
+        console.log(path);
 
-                    if (path.indexOf('loanId') > 0) {
-                      $scope.pageProps = {title: 'Loan Details'};
-                    }else if (path.indexOf('loanlist') > 0) {
-                      if (path.indexOf('home') > 0) {
-                        $scope.pageProps = {title: 'Home Loans'};
-                      }else if (path.indexOf('auto') > 0) {
-                        $scope.pageProps = {title: 'Auto Loans'};
-                      }else {
-                        $scope.pageProps = {title: 'Personal Loans'};
-                      }
-                    }else if (path.indexOf('home') > 0) {
-                      $scope.pageProps = {title: 'Loan Smart'};
-                    }else if (path.indexOf('compare') > 0) {
-                      $scope.pageProps = {title: 'Compare Loans'};
-                    }else{
-                      $scope.pageProps = {title: 'EMI Calculator'};
-                    }
+        if (path.indexOf('loanId') > 0) {
+          $scope.pageProps = {
+            title: 'Loan Details',
+            goBack: true
+          };
+        } else if (path.indexOf('loanlist') > 0) {
+          if (path.indexOf('home') > 0) {
+            $scope.pageProps = {
+              title: 'Home Loans'
+            };
+          } else if (path.indexOf('auto') > 0) {
+            $scope.pageProps = {
+              title: 'Auto Loans'
+            };
+          } else {
+            $scope.pageProps = {
+              title: 'Personal Loans'
+            };
+          }
+        } else if (path.indexOf('home') > 0) {
+          $scope.pageProps = {
+            title: 'Loan Smart'
+          };
+        } else if (path.indexOf('compare') > 0) {
+          $scope.pageProps = {
+            title: 'Compare Loans',
+            goBack: true
+          };
+        } else {
+          $scope.pageProps = {
+            title: 'EMI Calculator',
+            goBack: true
+          };
+        }
 
-                    $scope.toggleLeft = function() {
-                      $mdSidenav('left').toggle();
-                    };
-                  },
+        $scope.toggleLeft = function () {
+          $mdSidenav('left').toggle();
+        };
+        $scope.goTo = function (category) {
+          var navTo = category === 'emicalc' ? '/emicalc' : '/loanlist/' + category;
+          $location.path(navTo);
+        };
+        $scope.back = function() {
+          $window.history.back();
+        };
+      },
 
-      link: function(scope, element) {
-              if (scope.pageProps.title === 'Loan Smart') {
-                element.find('md-toolbar').removeClass('md-whiteframe-z1');
-              }
-            },
+      link: function (scope, element) {
+        if (scope.pageProps.title === 'Loan Smart') {
+          element.find('md-toolbar').removeClass('md-whiteframe-z1');
+        }
+      },
 
       templateUrl: 'views/partials/toolbar.html'
     };
   })
-  .factory('sharedProps', ['$http', '$q', function($http, $q) {
-    var service = {};
-    var DATA_URL = 'data/data.json';
+  .factory('sharedProps', ['$http', '$q',
+    function ($http, $q) {
+      var service = {};
+      var DATA_URL = 'data/data.json';
 
-    service.getLoans = function() {
-      var deferred = $q.defer(),
-        httpPromise = $http.get(DATA_URL);
+      service.getLoans = function () {
+        var deferred = $q.defer(),
+          httpPromise = $http.get(DATA_URL);
 
-      httpPromise.then(function (response) {
-        deferred.resolve(response);
-      }, function (error) {
-        console.error(error);
-      });
+        httpPromise.then(function (response) {
+          deferred.resolve(response);
+        }, function (error) {
+          console.error(error);
+        });
 
-      return deferred.promise;
-    };
+        return deferred.promise;
+      };
 
-//    service.getLoanId = function(loanList, loanId){
-//      for (var i = 0; i < loanList.length; i++){
-//        if (loanList[i].id === loanId){
-//          return loanList[i];
-//          break;
-//        }
-//      }
-//    };
+      //    service.getLoanId = function(loanList, loanId){
+      //      for (var i = 0; i < loanList.length; i++){
+      //        if (loanList[i].id === loanId){
+      //          return loanList[i];
+      //          break;
+      //        }
+      //      }
+      //    };
 
-    service.calculateEMI = function(p, r, t){
-    	return Math.round(p*r*(1/(1 - (1/Math.pow((1+r), t)))));
-    };
+      service.calculateEMI = function (p, r, t) {
+        return Math.round(p * r * (1 / (1 - (1 / Math.pow((1 + r), t)))));
+      };
 
-    return service;
+      return service;
   }]);
