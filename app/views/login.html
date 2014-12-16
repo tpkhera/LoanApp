@@ -4,24 +4,35 @@
     <div class="title">LoanSmart</div>
   </div>
 
-  <div class="logo"><i class="fa fa-shekel"></i></div>
-
-  <div>
-    <form ng-submit="addUser(user)">
-      <div class="row">
-        <i class="fa fa-envelope"></i>
-        <md-text-float label="Email ID" type="email" ng-model="user.email"></md-text-float>
-      </div>
-      <div class="row">
-        <i class="fa fa-key"></i>
-        <md-text-float label="Password" type="password" ng-model="user.password"></md-text-float>
-      </div>
-
-      <md-button type="submit">Sign Up</md-button>
-    </form>
+  <div class="logo"><i class="icon-ils"></i>
   </div>
 
   <div>
-    <div>Already signed up? <a href="">LOGIN</a></div>
+    <form name="loginForm" ng-submit="signIn(user)" novalidate>
+      <div class="text-input" layout-align="center center">
+        <i class="icon-mail2"></i>
+        <md-text-float name="email" label="Email ID" type="email" ng-model="user.email" required></md-text-float>
+      </div>
+      <div class="text-input" layout-align="center center">
+        <i class="icon-key"></i>
+        <md-text-float name="password" label="Password" type="password" ng-model="user.password" required></md-text-float>
+      </div>
+
+      <div layout="row" layout-align="end center">
+        <md-button class="toggle" ng-hide="SignedUp" type="submit">Sign Up</md-button>
+        <md-button class="toggle" ng-show="SignedUp" type="submit">Login</md-button>
+      </div>
+    </form>
+
+    <div layout="row" layout-align="end center">
+      <div class="toggle" ng-hide="SignedUp" layout="row" layout-align="center center">
+        <span>Signed up?</span>
+        <md-button ng-click="SignedUp = !SignedUp">Login</md-button>
+      </div>
+      <div class="toggle" ng-show="SignedUp" layout="row" layout-align="center center">
+        <span>New user?</span>
+        <md-button ng-click="SignedUp = !SignedUp">Sign Up</md-button>
+      </div>
+    </div>
   </div>
 </md-content>

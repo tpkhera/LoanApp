@@ -1,24 +1,49 @@
 <toolbar></toolbar>
 
-<md-content style="height: 89.8%;" layout="column">
-    <div class="loan-details" layout="row" layout-align="center center">
-      <div class="bank-logo" flex="50" layout="column" layout-align="center end">
+<md-content class="page-content" layout="column">
+  <div class="loan-details" layout="row" layout-align="center center">
+    <div class="bank-logo" flex="50" layout="column" layout-align="center end">
+      <!--
         <div class="circle-text" style="width: 80px;">
           <div>A</div>
         </div>
-      </div>
-
-      <div class="details" flex>
-        <div><i class="fa fa-rupee"></i> {{principal  | currency:"INR ":"0"}} </div>
-        <div><i class="fa fa-at"></i> {{loan.rate}}% </div>
-        <div><i class="fa fa-bank"></i> {{loan.name}} </div>
-        <div><i class="fa fa-clock-o"></i> {{time}} </div>
+-->
+      <div class="circle circle-solid" style="width: 80px;">
+        <div class="circle-inner">
+          <div>{{initial(loan.name)}}</div>
+        </div>
       </div>
     </div>
 
-    <div class="emi-details">
-      <div class="emi"></div>
-      <div class="time-graph"></div>
-      <div class="get-loan"></div>
+    <div class="details" flex>
+      <div><i class="fa fa-bank"></i>{{loan.name}}</div>
+      <div><i class="fa fa-rupee"></i> {{principal | currency:"INR ":"0"}}</div>
+      <div><i class="fa fa-at"></i>{{loan.rate}}% per annum</div>
+      <div><i class="fa fa-clock-o"></i>{{time}} years</div>
     </div>
+  </div>
+
+  <md-divider></md-divider>
+
+  <div class="emi-details">
+    <div class="emi">
+      <section>
+        <md-subheader>EMI Details</md-subheader>
+        <div layout="row">
+          <div layout="column" layout-align="center end" flex>
+            <span>EMI:</span>
+            <span>Net Interest:</span>
+          </div>
+          <div layout="column" layout-align="center start" flex>
+            <div><i class="fa fa-rupee"></i><span>{{EMI()}}</span>
+            </div>
+            <div><i class="fa fa-rupee"></i><span>{{netInterest()}}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="time-graph"></div>
+    <div class="get-loan"></div>
+  </div>
 </md-content>

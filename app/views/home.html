@@ -1,39 +1,43 @@
 <toolbar></toolbar>
-<md-content style="height: 89.8%;" class="home" layout="column" layout-align="center center">
-	<div class="home-text" layout="column">
-		<div>Hi,</div>
-		<div>how can we help you?</div>
-	</div>
+<md-content class="home page-content" layout="column" layout-align="center center">
+  <div flex="100" style="width: 90%" layout="column">
+    <div class="home-text" layout="column">
+      <div>Hi,</div>
+      <div>how can we help you?</div>
+    </div>
 
-	<div class="home-row" layout="row">
-		<md-button class="left" ng-click="goTo('home')">
-			<div class="home-col" layout="column">
-				<i class="fa fa-home"></i>
-				Home Loans
-			</div>
-		</md-button>
+    <div layout="column">
+      <div class="home-row top" layout="row">
+        <md-button class="grid left" ng-click="goTo('home')" flex="50">
+          <div class="home-col" layout="column">
+            <i class="icon-home"></i>
+            Home Loans
+          </div>
+        </md-button>
 
-		<md-button ng-click="goTo('auto')">
-			<div class="home-col" layout="column">
-				<i class="fa fa-automobile"></i>
-				Auto Loans
-			</div>
-		</md-button>
-	</div>
+        <md-button class="grid right" ng-click="goTo('auto')" flex="50">
+          <div class="home-col" layout="column">
+            <i class="icon-automobile right"></i>
+            Auto Loans
+          </div>
+        </md-button>
+      </div>
 
-	<div class="home-row" layout="row" style="border-top: 1px solid #e5e5e5;">
-		<md-button class="left" ng-click="goTo('personal')">
-			<div class="home-col" layout="column">
-				<i class="fa fa-user"></i>
-				Personal Loans
-			</div>
-		</md-button>
+      <div class="home-row bottom" layout="row">
+        <md-button class="grid left" ng-click="goTo('personal')" flex="50">
+          <div class="home-col" layout="column">
+            <i class="icon-user"></i>
+            Personal Loans
+          </div>
+        </md-button>
 
-		<md-button ng-click="goTo('emicalc')">
-			<div class="home-col" layout="column">
-				<i class="fa fa-calculator"></i>
-				EMI Calculator
-			</div>
-		</md-button>
-	</div>
+        <md-button class="grid right" ng-click="goTo('emicalc')" flex="50">
+          <div class="home-col" layout="column">
+            <i class="icon-calculator right"></i>
+            EMI Calculator
+          </div>
+        </md-button>
+      </div>
+    </div>
+  </div>
 </md-content>

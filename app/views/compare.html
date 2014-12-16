@@ -1,0 +1,22 @@
+<toolbar></toolbar>
+
+ <md-content class="page-content">
+  <md-card ng-repeat="loan in loans" ng-click="openDetails(loan)">
+    <div class="loan-details" layout="row" layout-align="center center">
+      <div class="bank-logo" flex="50" layout="column" layout-align="center end">
+        <div class="circle circle-solid" style="width: 80px;">
+          <div class="circle-inner">
+            <div>{{initial(loan.name)}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="details" flex>
+        <div><i class="fa fa-bank"></i>{{loan.name}}</div>
+        <div><i class="fa fa-rupee"></i> {{principal | currency:"INR ":"0"}}</div>
+        <div><i class="fa fa-at"></i>{{loan.rate}}% per annum</div>
+        <div><i class="fa fa-clock-o"></i>{{time}} years</div>
+      </div>
+    </div>
+  </md-card>
+</md-content>

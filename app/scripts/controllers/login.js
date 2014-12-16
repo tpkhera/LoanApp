@@ -10,10 +10,21 @@
 angular.module('loanAdvisorApp')
   .controller('LoginCtrl', function ($scope, $location) {
     $scope.user = {
-
+      email: '',
+      password: ''
     };
 
-    $scope.addUser = function(user) {
-    	$location.path('/home');
+    $scope.SignedUp = false;
+    //
+    //    $scope.changeForm = function() {
+    //      $scope.SignedUp = $scope.SignedUp === 0 ? 1 : 0;
+    //      console.log($scope.SignedUp);
+    //      $location.path('/');
+    //    };
+
+    $scope.signIn = function (user) {
+      if ($scope.loginForm.$valid) {
+        $location.path('/home');
+      }
     };
   });

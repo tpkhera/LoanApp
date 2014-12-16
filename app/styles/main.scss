@@ -1,16 +1,317 @@
 // bower:scss
 // endbower
-// $fa-font-path: "../bower_components/font-awesome/fonts";
-// @import "../bower_components/font-awesome/scss/font-awesome.scss";
+@import "icon-font.scss";
+
+ $Raleway:'Raleway';
+ $Roboto:'Roboto';
+ $AppColor: #2196F3;
+ $ContentHeight1: 100%;
+ $ContentHeight2: 100%;
 
 @font-face {
-  font-family: "Raleway regular";
+  font-family: "Raleway";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/Raleway regular.ttf") format('truetype');
+  src: url("./fonts/Raleway regular.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  src: url("./fonts/Roboto-Light.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/Roboto-Regular.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/Roboto-Medium.ttf") format('truetype');
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/Roboto-Bold.ttf") format('truetype');
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  .container {
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+    #app {
+      width: inherit;
+      height: inherit;
+      position: absolute;
+      overflow: hidden;
+    }
+  }
+}
+md-toolbar.app-toolbar {
+  background-color: $AppColor;
+  z-index: 5;
+  height: 56px;
+  min-height: 56px;
+  .md-toolbar-tools {
+    height: 56px;
+    min-height: 56px;
+    padding: 0 0 0 0;
+    i {
+      font-size: 24px;
+      color: white;
+    }
+    span {
+      padding-bottom: 4px;
+    }
+  }
+}
+md-content {
+  &.page-content {
+    height: $ContentHeight1;
+    &-less {
+      height: $ContentHeight2;
+    }
+  }
+}
+.md-sidenav-left {
+  i {
+    font-size: 24px;
+  }
 }
 
-.slide-right {
+//##################################################################
+//Login
+//##################################################################
+md-content.login {
+  background-color: $AppColor;
+  height: 100%;
+  overflow: hidden;
+  .text-input {
+    display: flex;
+    i {
+      font-size: 1.5em;
+      padding-top: 20px;
+      padding-right: 10px;
+      color: #1565C0;
+    }
+  }
+  .logo {
+    font-size: 128px;
+    color: white;
+  }
+  .welcome {
+    color: white;
+    text-align: center;
+    font-family: $Raleway;
+    .title {
+      font-size: 2em;
+      font-weight: 500;
+    }
+    .text {
+      font-size: 1.5em;
+    }
+  }
+  .md-button {
+    color: white;
+    font-family: $Roboto;
+    font-weight: 500;
+    float: right;
+  }
+}
+//##################################################################
+//Home
+//##################################################################
+ md-content.home {
+  background-color: $AppColor;
+  .home-text {
+    text-align: center;
+    font-family: $Raleway;
+    color: white;
+  }
+  .grid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .home-col {
+      text-align: center;
+      font-family: $Raleway;
+      color: white;
+      i {
+        color: #BBDEFB;
+        font-size: 64px;
+
+        &.right {
+          font-size: 56px;
+          padding-bottom: 5px;
+          padding-top: 2px;
+        }
+      }
+    }
+  }
+  .bottom {
+    border-top: 1px solid #e5e5e5;
+  }
+  .left {
+    border-right: 1px solid #e5e5e5;
+    border-radius: 0px;
+  }
+}
+//##################################################################
+//LoanList
+//##################################################################
+ .shrinkable-toolbar {
+  background-color: #e5e5e5;
+  z-index: 1;
+  height: 48px;
+  min-height: 48px;
+  .md-toolbar-tools {
+    height: 48px;
+    min-height: 48px;
+    font-size: 14px;
+    .shrinkable-toolbar-input {
+      padding-bottom: 8px;
+      input {
+        width: 80px;
+        line-height: 20px;
+      }
+    }
+    .md-button {
+      color: $AppColor;
+    }
+    i {
+      color: #666666;
+      font-size: 20px;
+    }
+  }
+}
+md-divider[inset] {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.md-tile-content p,
+h3 {
+  font-family: $Raleway;
+  text-align: center;
+}
+.search-result {
+  padding-left: 16px;
+  i {
+    font-size: 18px;
+    color: #666666;
+    padding-right: 3px;
+  }
+}
+.md-fab {
+  position: fixed;
+  bottom: 5%;
+  right: 10%;
+  z-index: 9;
+  i {
+    font-size: 24px;
+  }
+}
+.circle {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  width: 100%;
+  position: relative;
+}
+.circle-border {
+  border: 3px solid #37cde7;
+}
+.circle-solid {
+  background-color: #37cde7;
+}
+.circle:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+.circle-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+}
+.circle-inner div {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1em;
+  line-height: 1em;
+  font-size: 2em;
+  color: white;
+  font-family: $Roboto;
+  font-weight: 700;
+}
+//.circle-text:after {
+//  content: "";
+//  display: block;
+//  width: 100%;
+//  height: 0;
+//  padding-bottom: 100%;
+//  background: #37cde7;
+//  -moz-border-radius: 50%;
+//  -webkit-border-radius: 50%;
+//  border-radius: 50%;
+//}
+//
+//.circle-text div {
+//  float:left;
+//  width:100%;
+//  padding-top:50%;
+//  line-height:1em;
+//  margin-top:-0.5em;
+//  text-align:center;
+//  color:white;
+//  font-size: 2em;
+//  font-family: $Raleway;
+//}
+//##################################################################
+//LoanDetails
+//##################################################################
+.loan-details {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  .details div {
+    padding-top: 1px;
+    padding-bottom: 2px;
+  }
+}
+/* Responsive: Portrait tablets and up */
+
+//@media screen and (min-width: 768px) {
+//  .container {
+//    max-width: 730px;
+//  }
+//
+//  /* Remove the padding we set earlier *///  .header,
+//  .marketing,
+//  .footer {
+//    padding-left: 0;
+//    padding-right: 0;
+//  }
+//  /* Space out the masthead *///  // .header {
+//  //   margin-bottom: 30px;
+//  // }
+//  /* Remove the bottom border on the jumbotron for visual effect *///  .jumbotron {
+//    border-bottom: 0;
+//  }
+//}
+ .slide-right {
   // transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transition: cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
   /* easeOutQuad */
@@ -18,195 +319,89 @@
   /* easeOutQuad */
 }
 /* line 165, ../sass/ng-animation.scss */
+
 .slide-right.ng-enter {
   transform: translateX(160px);
-  transition-duration: 500ms;
+  transition-duration: 750ms;
   opacity: 0;
 }
 /* line 171, ../sass/ng-animation.scss */
+
 .slide-right.ng-enter-active {
   transform: translateX(0);
   opacity: 1;
 }
 /* line 176, ../sass/ng-animation.scss */
+
 .slide-right.ng-leave {
   transform: scale(1);
-//  transform: translateX(0);
-  transition-duration: 500ms;
+  //  transform: translateX(0);
+  transition-duration: 750ms;
   opacity: 1;
 }
 /* line 182, ../sass/ng-animation.scss */
+
 .slide-right.ng-leave-active {
   transform: scale(0.5);
-//  transform: translateX(160px);
+  //  transform: translateX(160px);
   opacity: 0;
 }
-
-body, html {
-  width: 100%;
-  height: 100%;
+.toggle {
+  transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* easeOutQuad */
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* easeOutQuad */
 }
-
-.container {
-  width: inherit;
-  height: inherit;
+.toggle.ng-hide-add {
+  transition-duration: 500ms;
+  opacity: 1;
 }
+/* line 89, ../sass/ng-animation.scss */
 
-#app {
-  width: inherit;
-  height: inherit;
-  position: absolute;
+.toggle.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
 }
+/* line 94, ../sass/ng-animation.scss */
 
-/* Custom page header */
-// .header {
-//   border-bottom: 1px solid #e5e5e5;
-
-//   Make the masthead heading the same height as the navigation
-//   h3 {
-//     margin-top: 0;
-//     margin-bottom: 0;
-//     line-height: 40px;
-//     padding-bottom: 19px;
-//   }
-// }
-//##################################################################
-//Login
-//##################################################################
-.login.md-default-theme {
-  background-color: #2196F3;
-  height: 100%;
+.toggle.ng-hide-remove {
+  transition-duration: 1000ms;
+  //  display: block !important;
+  opacity: 0;
 }
+/* line 99, ../sass/ng-animation.scss */
 
-.row {
-  display: flex;
-  .fa {
-    font-size: 24px;
-    padding-top: 30px;
-    padding-right: 10px;
-  }
+.toggle.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
 }
-
-.welcome {
-  color: white;
-  text-align: center;
-  font-family: "Raleway regular";
-
-  .text{
-    font-size: 1.5em;
-  }
-
-  .title{
-    font-size: 2em;
-  }
+.bouncy-slide-top {
+  transition: all 0 cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.45, 1.595);
+  /* custom */
 }
+/* line 351, ../sass/ng-animation.scss */
 
-//##################################################################
-//Home
-//##################################################################
-.home.md-default-theme {
-  background-color: #2196F3;
-  height: inherit;
-
-  .home-text,
-  .home-col {
-    text-align: center;
-    font-family: "Raleway regular";
-    .fa {
-      color: inherit;
-      font-size: 64px;
-    }
-  }
-
-  md-button.left {
-    border-right: 1px solid #e5e5e5;
-    border-radius: 0px;
-  }
+.bouncy-slide-top.ng-hide-add {
+  transform: translateY(0);
+  transition-duration: 250ms;
+  opacity: 1;
 }
+/* line 356, ../sass/ng-animation.scss */
 
-//##################################################################
-//LoanList
-//##################################################################
-
-
-md-divider[inset] {
-  margin-left: 5%;
-  margin-right: 5%;
+.bouncy-slide-top.ng-hide-add.ng-hide-add-active {
+  transform: translateY(240px);
+  opacity: 0;
 }
+/* line 362, ../sass/ng-animation.scss */
 
-.md-toolbar-tools i {
-  font-size: 24px;
-  color: white;
+.bouncy-slide-top.ng-hide-remove {
+  transform: translateY(240px);
+  transition-duration: 250ms;
+  display: block !important;
+  opacity: 0;
 }
+/* line 368, ../sass/ng-animation.scss */
 
-.fa.fa-rupee {
-  font-size: 18px;
-  color: #666666;
-  padding-right: 3px;
-}
-
-.md-tile-content p, h3{
-  font-family: 'Raleway regular';
-  text-align:center;
-}
-
-.search-result{
-  padding-left: 16px;
-}
-
-.shrinkable-toolbar-input > input {
-  width: 80px;
-}
-
-.circle-text:after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 0;
-  padding-bottom: 100%;
-  background: #37cde7; 
-  -moz-border-radius: 50%; 
-  -webkit-border-radius: 50%; 
-  border-radius: 50%;
-}
-
-.circle-text div {
-  float:left;
-  width:100%;
-  padding-top:50%;
-  line-height:1em;
-  margin-top:-0.5em;
-  text-align:center;
-  color:white;
-  font-size: 2em;
-  font-family: "Raleway regular";
-  // font-weight: bold;
-}
-
-/* Responsive: Portrait tablets and up */
-//@media screen and (min-width: 768px) {
-//  .container {
-//    max-width: 730px;
-//  }
-//
-//  /* Remove the padding we set earlier */
-//  .header,
-//  .marketing,
-//  .footer {
-//    padding-left: 0;
-//    padding-right: 0;
-//  }
-//  /* Space out the masthead */
-//  // .header {
-//  //   margin-bottom: 30px;
-//  // }
-//  /* Remove the bottom border on the jumbotron for visual effect */
-//  .jumbotron {
-//    border-bottom: 0;
-//  }
-//}
-
-.logo {
-  font-size: 128px;
-  color: white;
+.bouncy-slide-top.ng-hide-remove.ng-hide-remove-active {
+  transform: translateY(0);
+  opacity: 1;
 }
