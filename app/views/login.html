@@ -8,31 +8,20 @@
   </div>
 
   <div>
-    <form name="loginForm" ng-submit="signIn(user)" novalidate>
+    <form name="loginForm" ng-submit="signIn()" novalidate>
       <div class="text-input" layout-align="center center">
         <i class="icon-mail2"></i>
-        <md-text-float name="email" label="Email ID" type="email" ng-model="user.email" required></md-text-float>
+        <md-text-float class="login-text-input" name="email" label="Email ID" type="email" ng-model="user.email" required></md-text-float>
       </div>
       <div class="text-input" layout-align="center center">
         <i class="icon-key"></i>
-        <md-text-float name="password" label="Password" type="password" ng-model="user.password" required></md-text-float>
+        <md-text-float class="login-text-input" name="password" label="Password" type="password" ng-model="user.password" required></md-text-float>
       </div>
-
-      <div layout="row" layout-align="end center">
-        <md-button class="toggle" ng-hide="SignedUp" type="submit">Sign Up</md-button>
-        <md-button class="toggle" ng-show="SignedUp" type="submit">Login</md-button>
-      </div>
+    <md-button type="submit" hidden="hidden"></md-button>
     </form>
-
-    <div layout="row" layout-align="end center">
-      <div class="toggle" ng-hide="SignedUp" layout="row" layout-align="center center">
-        <span>Signed up?</span>
-        <md-button ng-click="SignedUp = !SignedUp">Login</md-button>
-      </div>
-      <div class="toggle" ng-show="SignedUp" layout="row" layout-align="center center">
-        <span>New user?</span>
-        <md-button ng-click="SignedUp = !SignedUp">Sign Up</md-button>
-      </div>
+    <div class="buttons" layout="row" layout-align="end center">
+      <md-button class="skip" ng-click="goHome()">Skip</md-button>
+      <md-button ng-click="signIn()">Sign In</md-button>
     </div>
   </div>
 </md-content>

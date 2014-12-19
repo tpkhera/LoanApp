@@ -13,7 +13,8 @@ angular
     'ngAnimate',
     'ngRoute',
     'ngTouch',
-    'ngMaterial'
+    'ngMaterial',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -51,7 +52,6 @@ angular
 
       controller: function ($scope, $location, $window, $mdSidenav) {
         var path = $location.path();
-        console.log(path);
 
         if (path.indexOf('loanId') > 0) {
           $scope.pageProps = {
@@ -95,7 +95,7 @@ angular
           var navTo = category === 'emicalc' ? '/emicalc' : '/loanlist/' + category;
           $location.path(navTo);
         };
-        $scope.back = function() {
+        $scope.back = function () {
           $window.history.back();
         };
       },
@@ -111,8 +111,8 @@ angular
   })
   .factory('sharedProps', ['$http', '$q',
     function ($http, $q) {
-      var service = {};
-      var DATA_URL = 'data/data.json';
+      var service = {},
+        DATA_URL = 'data/data.json';
 
       service.getLoans = function () {
         var deferred = $q.defer(),
@@ -121,7 +121,7 @@ angular
         httpPromise.then(function (response) {
           deferred.resolve(response);
         }, function (error) {
-          console.error(error);
+          deferred.reject(error);
         });
 
         return deferred.promise;
@@ -141,4 +141,4 @@ angular
       };
 
       return service;
-  }]);
+    }]);

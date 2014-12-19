@@ -102,6 +102,20 @@ md-content.login {
       padding-right: 10px;
       color: #1565C0;
     }
+    md-input-group {
+      padding: 2px 0 2px 0;
+      input {
+        color: #1565C0;
+      }
+      &.md-input-focused {
+        label {
+          color: rgba(0, 0, 0, 0.26);
+        }
+        input {
+          border-color: rgba(0, 0, 0, 0.12);
+        }
+      }
+    }
   }
   .logo {
     font-size: 128px;
@@ -119,11 +133,18 @@ md-content.login {
       font-size: 1.5em;
     }
   }
-  .md-button {
-    color: white;
-    font-family: $Roboto;
-    font-weight: 500;
-    float: right;
+
+  .buttons {
+    padding: 20px 0 20px 0;
+    .md-button {
+      color: white;
+      font-family: $Roboto;
+      font-weight: 500;
+      &.skip {
+        color: #1565C0;
+        padding-right: 16px;
+      }
+    }
   }
 }
 //##################################################################
@@ -135,6 +156,12 @@ md-content.login {
     text-align: center;
     font-family: $Raleway;
     color: white;
+    .h {
+      font-size: 32px;
+    }
+    .p {
+      font-size: 24px;
+    }
   }
   .grid {
     padding-top: 20px;
@@ -161,6 +188,12 @@ md-content.login {
   .left {
     border-right: 1px solid #e5e5e5;
     border-radius: 0px;
+  }
+
+  .disclaimer {
+    span {
+      color: #1565C0;
+    }
   }
 }
 //##################################################################
