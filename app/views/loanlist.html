@@ -44,8 +44,8 @@
 
         <div class="md-tile-content" ng-click="openDetails(loan)">
           <h3>{{loan.rate}}%</h3>
-          <p>
-            {{loan.rateType}}
+          <p ng-show="loan.processingFee">
+            +{{loan.processingFee}}% p. fee
           </p>
         </div>
 

@@ -1,49 +1,72 @@
 <toolbar></toolbar>
-
 <md-content class="page-content" layout="column">
-  <div class="loan-details" layout="row" layout-align="center center">
-    <div class="bank-logo" flex="50" layout="column" layout-align="center end">
-      <!--
-        <div class="circle-text" style="width: 80px;">
-          <div>A</div>
+  <md-content flex>
+    <div class="loan-details" layout="row" layout-align="center center">
+      <div class="bank-logo" flex="33" layout="row" layout-align="start center">
+        <div class="circle circle-solid" style="width: 80px;">
+          <div class="circle-inner">
+            <div>{{initial(loan.name)}}</div>
+          </div>
         </div>
--->
-      <div class="circle circle-solid" style="width: 80px;">
-        <div class="circle-inner">
-          <div>{{initial(loan.name)}}</div>
+      </div>
+
+      <div class="details" flex style="font-size: 14px; color: #666666">
+        <div layout="row" layout-align="start center">
+          <i class="icon-bank" flex="10"></i>
+          <span flex>{{loan.name}}</span>
+        </div>
+        <div layout="row" layout-align="start center">
+          <i class="icon-inr" flex="10"></i>
+          <span flex>{{principal | currency:"":"0"}}</span>
+        </div>
+        <div layout="row" layout-align="start center">
+          <i class="icon-at" flex="10"></i>
+          <span flex>{{loan.rate}}% p.a.<span ng-show="loan.processingFee">
+             + {{loan.processingFee}}% p. fee
+          </span></span>
+        </div>
+        <div layout="row" layout-align="start center">
+          <i class="icon-clock" flex="10"></i>
+          <span flex>{{time}} years</span>
         </div>
       </div>
     </div>
 
-    <div class="details" flex>
-      <div><i class="fa fa-bank"></i>{{loan.name}}</div>
-      <div><i class="fa fa-rupee"></i> {{principal | currency:"INR ":"0"}}</div>
-      <div><i class="fa fa-at"></i>{{loan.rate}}% per annum</div>
-      <div><i class="fa fa-clock-o"></i>{{time}} years</div>
-    </div>
-  </div>
+    <md-divider inset></md-divider>
 
-  <md-divider></md-divider>
-
-  <div class="emi-details">
-    <div class="emi">
+    <div class="emi-details" style="font-size: 14px; color: #666666">
       <section>
         <md-subheader>EMI Details</md-subheader>
-        <div layout="row">
-          <div layout="column" layout-align="center end" flex>
-            <span>EMI:</span>
-            <span>Net Interest:</span>
+        <div class="emi" flex layout="column">
+          <div layout="row" layout-align="start center">
+            <!--            <span flex="10"></span>-->
+            <span flex="33">EMI</span>
+            <span flex><i class="icon-inr"></i> {{EMI() | currency:"":"0"}}</span>
           </div>
-          <div layout="column" layout-align="center start" flex>
-            <div><i class="fa fa-rupee"></i><span>{{EMI()}}</span>
-            </div>
-            <div><i class="fa fa-rupee"></i><span>{{netInterest()}}</span>
-            </div>
+          <div layout="row" layout-align="start center">
+            <!--            <span flex="10"></span>-->
+            <span flex="33">Net Interest</span>
+            <span flex><i class="icon-inr"></i> {{netInterest() | currency:"":"0"}}</span>
+          </div>
+          <div layout="row" layout-align="start center">
+            <!--            <span flex="10"></span>-->
+            <span flex="33">Total Payable</span>
+            <span flex><i class="icon-inr"></i> {{netPayable() | currency:"":"0"}}</span>
           </div>
         </div>
       </section>
+      <section>
+        <md-subheader>Interest vs Time</md-subheader>
+        <div class="time-graph">
+          <chartist class="ct-chart ct-golden-section" chartist-data="barData" chartist-chart-type="Bar" chartist-chart-options="barOptions" chartist-events="events"></chartist>
+        </div>
+      </section>
+      <section>
+        <md-subheader>Get Loan</md-subheader>
+        <div class="get-loan">
+
+        </div>
+      </section>
     </div>
-    <div class="time-graph"></div>
-    <div class="get-loan"></div>
-  </div>
+  </md-content>
 </md-content>

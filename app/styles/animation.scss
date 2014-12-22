@@ -1,0 +1,66 @@
+ .slide-right {
+  // transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all cubic-bezier(0.550, 0.085, 0.680, 0.530);
+  /* easeOutQuad */
+  transition-timing-function: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+//  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* easeOutQuad */
+}
+/* line 165, ../sass/ng-animation.scss */
+
+.slide-right.ng-enter {
+  transform: translateX(160px);
+  transition-duration: 500ms;
+  opacity: 0;
+}
+/* line 171, ../sass/ng-animation.scss */
+
+.slide-right.ng-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+/* line 176, ../sass/ng-animation.scss */
+
+.slide-right.ng-leave {
+  transform: scale(1);
+  transition-duration: 500ms;
+  opacity: 1;
+}
+/* line 182, ../sass/ng-animation.scss */
+
+.slide-right.ng-leave-active {
+  transform: scale(0.5);
+  opacity: 0;
+}
+.bouncy-slide-top {
+  transition: all 0 cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.45, 1.595);
+  /* custom */
+}
+/* line 351, ../sass/ng-animation.scss */
+
+.bouncy-slide-top.ng-hide-add {
+  transform: translateY(0);
+  transition-duration: 250ms;
+  opacity: 1;
+}
+/* line 356, ../sass/ng-animation.scss */
+
+.bouncy-slide-top.ng-hide-add.ng-hide-add-active {
+  transform: translateY(240px);
+  opacity: 0;
+}
+/* line 362, ../sass/ng-animation.scss */
+
+.bouncy-slide-top.ng-hide-remove {
+  transform: translateY(240px);
+  transition-duration: 250ms;
+  display: block !important;
+  opacity: 0;
+}
+/* line 368, ../sass/ng-animation.scss */
+
+.bouncy-slide-top.ng-hide-remove.ng-hide-remove-active {
+  transform: translateY(0);
+  opacity: 1;
+}

@@ -1,44 +1,13 @@
 // bower:scss
 // endbower
-@import "icon-font.scss";
-
+@import "fonts.scss";
+@import "animation.scss";
  $Raleway:'Raleway';
  $Roboto:'Roboto';
- $AppColor: #2196F3;
- $ContentHeight1: 100%;
- $ContentHeight2: 100%;
-
-@font-face {
-  font-family: "Raleway";
-  font-style: normal;
-  font-weight: 400;
-  src: url("./fonts/Raleway regular.ttf") format('truetype');
-}
-@font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 300;
-  src: url("./fonts/Roboto-Light.ttf") format('truetype');
-}
-@font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  src: url("./fonts/Roboto-Regular.ttf") format('truetype');
-}
-@font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 500;
-  src: url("./fonts/Roboto-Medium.ttf") format('truetype');
-}
-@font-face {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 700;
-  src: url("./fonts/Roboto-Bold.ttf") format('truetype');
-}
-body,
+ $AppColor:#2196F3;
+ $ContentHeight1:91.25%;
+ $ContentHeight2:83.75%;
+ body,
 html {
   width: 100%;
   height: 100%;
@@ -86,7 +55,6 @@ md-content {
     font-size: 24px;
   }
 }
-
 //##################################################################
 //Login
 //##################################################################
@@ -133,7 +101,6 @@ md-content.login {
       font-size: 1.5em;
     }
   }
-
   .buttons {
     padding: 20px 0 20px 0;
     .md-button {
@@ -173,7 +140,6 @@ md-content.login {
       i {
         color: #BBDEFB;
         font-size: 64px;
-
         &.right {
           font-size: 56px;
           padding-bottom: 5px;
@@ -189,7 +155,6 @@ md-content.login {
     border-right: 1px solid #e5e5e5;
     border-radius: 0px;
   }
-
   .disclaimer {
     span {
       color: #1565C0;
@@ -236,7 +201,6 @@ h3 {
 .search-result {
   padding-left: 16px;
   i {
-    font-size: 18px;
     color: #666666;
     padding-right: 3px;
   }
@@ -251,8 +215,8 @@ h3 {
   }
 }
 .circle {
-  margin-left: auto;
-  margin-right: auto;
+//  margin-left: auto;
+//  margin-right: auto;
   border-radius: 50%;
   width: 100%;
   position: relative;
@@ -317,124 +281,32 @@ h3 {
 //LoanDetails
 //##################################################################
 .loan-details {
-  padding-top: 10px;
-  padding-bottom: 20px;
-  .details div {
-    padding-top: 1px;
-    padding-bottom: 2px;
+  padding: 10px 16px 10px 16px;
+  .details {
+    .icon-bank {
+      padding-bottom: 2px;
+    }
+    .icon-inr {
+      font-size: 14px;
+    }
+    div {
+      padding-top: 1px;
+    }
   }
 }
-/* Responsive: Portrait tablets and up */
-
-//@media screen and (min-width: 768px) {
-//  .container {
-//    max-width: 730px;
-//  }
-//
-//  /* Remove the padding we set earlier *///  .header,
-//  .marketing,
-//  .footer {
-//    padding-left: 0;
-//    padding-right: 0;
-//  }
-//  /* Space out the masthead *///  // .header {
-//  //   margin-bottom: 30px;
-//  // }
-//  /* Remove the bottom border on the jumbotron for visual effect *///  .jumbotron {
-//    border-bottom: 0;
-//  }
-//}
- .slide-right {
-  // transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition: cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
-  /* easeOutQuad */
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  /* easeOutQuad */
-}
-/* line 165, ../sass/ng-animation.scss */
-
-.slide-right.ng-enter {
-  transform: translateX(160px);
-  transition-duration: 750ms;
-  opacity: 0;
-}
-/* line 171, ../sass/ng-animation.scss */
-
-.slide-right.ng-enter-active {
-  transform: translateX(0);
-  opacity: 1;
-}
-/* line 176, ../sass/ng-animation.scss */
-
-.slide-right.ng-leave {
-  transform: scale(1);
-  //  transform: translateX(0);
-  transition-duration: 750ms;
-  opacity: 1;
-}
-/* line 182, ../sass/ng-animation.scss */
-
-.slide-right.ng-leave-active {
-  transform: scale(0.5);
-  //  transform: translateX(160px);
-  opacity: 0;
-}
-.toggle {
-  transition: all 0 cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  /* easeOutQuad */
-  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  /* easeOutQuad */
-}
-.toggle.ng-hide-add {
-  transition-duration: 500ms;
-  opacity: 1;
-}
-/* line 89, ../sass/ng-animation.scss */
-
-.toggle.ng-hide-add.ng-hide-add-active {
-  opacity: 0;
-}
-/* line 94, ../sass/ng-animation.scss */
-
-.toggle.ng-hide-remove {
-  transition-duration: 1000ms;
-  //  display: block !important;
-  opacity: 0;
-}
-/* line 99, ../sass/ng-animation.scss */
-
-.toggle.ng-hide-remove.ng-hide-remove-active {
-  opacity: 1;
-}
-.bouncy-slide-top {
-  transition: all 0 cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.45, 1.595);
-  /* custom */
-}
-/* line 351, ../sass/ng-animation.scss */
-
-.bouncy-slide-top.ng-hide-add {
-  transform: translateY(0);
-  transition-duration: 250ms;
-  opacity: 1;
-}
-/* line 356, ../sass/ng-animation.scss */
-
-.bouncy-slide-top.ng-hide-add.ng-hide-add-active {
-  transform: translateY(240px);
-  opacity: 0;
-}
-/* line 362, ../sass/ng-animation.scss */
-
-.bouncy-slide-top.ng-hide-remove {
-  transform: translateY(240px);
-  transition-duration: 250ms;
-  display: block !important;
-  opacity: 0;
-}
-/* line 368, ../sass/ng-animation.scss */
-
-.bouncy-slide-top.ng-hide-remove.ng-hide-remove-active {
-  transform: translateY(0);
-  opacity: 1;
+.emi-details {
+  .emi {
+    padding: 0 16px 0 16px;
+  }
+  .time-graph {
+    padding: 0 16px 0 16px;
+    .ct-chart {
+      .ct-label.ct-horizontal {
+        text-align: center;
+      }
+      .ct-series .ct-bar {
+        stroke-width: 20px;
+      }
+    }
+  }
 }

@@ -14,7 +14,8 @@ angular
     'ngRoute',
     'ngTouch',
     'ngMaterial',
-    'firebase'
+    'firebase',
+    'angular-chartist'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -59,7 +60,12 @@ angular
             goBack: true
           };
         } else if (path.indexOf('loanlist') > 0) {
-          if (path.indexOf('home') > 0) {
+          if (path.indexOf('compare') > 0) {
+            $scope.pageProps = {
+              title: 'Compare Loans',
+              goBack: true
+            };
+          } else if (path.indexOf('home') > 0) {
             $scope.pageProps = {
               title: 'Home Loans'
             };
@@ -75,11 +81,6 @@ angular
         } else if (path.indexOf('home') > 0) {
           $scope.pageProps = {
             title: 'Loan Smart'
-          };
-        } else if (path.indexOf('compare') > 0) {
-          $scope.pageProps = {
-            title: 'Compare Loans',
-            goBack: true
           };
         } else {
           $scope.pageProps = {

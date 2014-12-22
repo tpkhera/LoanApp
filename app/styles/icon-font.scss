@@ -1,22 +1,20 @@
 @font-face {
 	font-family: 'LoanSmart';
-	src:url('fonts/LoanSmart.eot?hbf1f1');
-	src:url('fonts/LoanSmart.eot?#iefixhbf1f1') format('embedded-opentype'),
-		url('fonts/LoanSmart.woff?hbf1f1') format('woff'),
-		url('fonts/LoanSmart.ttf?hbf1f1') format('truetype'),
-		url('fonts/LoanSmart.svg?hbf1f1#LoanSmart') format('svg');
+	src:url('fonts/LoanSmart.eot?-majh67');
+	src:url('fonts/LoanSmart.eot?#iefix-majh67') format('embedded-opentype'),
+		url('fonts/LoanSmart.woff?-majh67') format('woff'),
+		url('fonts/LoanSmart.ttf?-majh67') format('truetype'),
+		url('fonts/LoanSmart.svg?-majh67#LoanSmart') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 i {
-	font-family: 'LoanSmart';
 	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
+    display: inline-block;
+    font: normal normal normal 14px/1 LoanSmart;
+    font-size: inherit;
+    text-rendering: auto;
 
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
@@ -41,8 +39,14 @@ i {
 .icon-automobile:before {
 	content: "\f1b9";
 }
+.icon-empire:before {
+	content: "\f1d1";
+}
 .icon-calculator:before {
 	content: "\f1ec";
+}
+.icon-at:before {
+	content: "\f1fa";
 }
 .icon-ils:before {
 	content: "\f20b";

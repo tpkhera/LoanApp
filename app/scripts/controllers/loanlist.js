@@ -65,6 +65,8 @@ angular.module('loanAdvisorApp')
 
     $scope.compare = function () {
       $rootScope.compareLoans = $scope.compareLoans;
+      $rootScope.principal = $scope.userPref.principal;
+      $rootScope.time = $scope.userPref.time;
       $location.path($location.path() + '/compare');
     };
 

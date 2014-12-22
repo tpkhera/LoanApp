@@ -2,9 +2,6 @@
 
 /**
  * @ngdoc function
- * @name loanAdvisorApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
  * Controller of the loanAdvisorApp
  */
 angular.module('loanAdvisorApp')
@@ -25,14 +22,70 @@ angular.module('loanAdvisorApp')
       return bankName.charAt(0);
     };
 
-    $scope.EMI = function() {
-      var p = $scope.principal, r = $scope.loan.rate/1200, t = $scope.time*12;
+    $scope.EMI = function (time) {
+      var p = $scope.principal,
+        r = $scope.loan.rate / 1200,
+        t = ((time) || $scope.time) * 12;
       return sharedProps.calculateEMI(p, r, t);
     };
 
-
-
-    $scope.netInterest = function() {
-      return $scope.EMI() * $scope.time * 12 - $scope.principal;
+    $scope.netInterest = function (time) {
+      time = (time) || $scope.time;
+      return $scope.EMI(time) * time * 12 - $scope.principal;
     };
+
+    $scope.netPayable = function () {
+      if ($scope.loan.processingFee) {
+        return parseInt($scope.netInterest()) + parseInt($scope.principal) + parseInt($scope.loan.processingFee * $scope.principal / 100);
+      }
+
+      return $scope.netInterest() + $scope.principal;
+    };
+
+    $scope.events = {
+      draw: function (data) {
+        if (data.type === 'label' && data.axis === 'x') {
+          data.element.attr({
+            dx: data.x + data.space / 2
+          });
+        }
+      }
+    };
+
+    $scope.barData = {
+      labels: [0, 0, 0, 0, 0],
+      series: [[0, 0, 0, 0, 0]]
+    };
+
+    $scope.barOptions = {
+      axisX: {
+        showGrid: false
+      },
+      axisY: {
+        labelInterpolationFnc: function (value) {
+          return (value / 1000) + 'k';
+        }
+      }
+    };
+
+    var getTimes = function (t) {
+      var t = parseInt(((t) || $scope.time));
+      if (t === 5) {
+        return [t, t + 5, t + 10, t + 15, t + 20];
+      } else if (t === 10) {
+        return [t - 5, t, t + 5, t + 10, t + 15];
+      } else {
+        return [t - 10, t - 5, t, t + 5, t + 10];
+      }
+    };
+
+    angular.forEach(getTimes(), function(value) {
+      console.log(value);
+      $scope.barData.series.forEach(function(serie) {
+        serie.push($scope.netInterest(value));
+        serie.splice(0,1);
+      });
+      $scope.barData.labels.push(value + ' yrs');
+      $scope.barData.labels.splice(0,1);
+    });
   });

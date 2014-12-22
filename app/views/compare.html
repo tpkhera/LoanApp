@@ -1,22 +1,40 @@
 <toolbar></toolbar>
 
- <md-content class="page-content">
+<md-content class="page-content">
   <md-card ng-repeat="loan in loans" ng-click="openDetails(loan)">
+
     <div class="loan-details" layout="row" layout-align="center center">
-      <div class="bank-logo" flex="50" layout="column" layout-align="center end">
+      <div class="bank-logo" flex="33" layout="row" layout-align="center end">
         <div class="circle circle-solid" style="width: 80px;">
           <div class="circle-inner">
             <div>{{initial(loan.name)}}</div>
           </div>
         </div>
       </div>
-
-      <div class="details" flex>
-        <div><i class="fa fa-bank"></i>{{loan.name}}</div>
-        <div><i class="fa fa-rupee"></i> {{principal | currency:"INR ":"0"}}</div>
-        <div><i class="fa fa-at"></i>{{loan.rate}}% per annum</div>
-        <div><i class="fa fa-clock-o"></i>{{time}} years</div>
+      <div class="details" flex style="font-family: 'Raleway'; font-weight: 500; color: #666666;">
+        <div layout="row" layout-align="start center">
+          <i class="icon-bank" flex="10"></i>
+          <span flex>{{loan.name}}</span>
+        </div>
+        <md-divider></md-divider>
+        <div layout="row" layout-align="start center">
+          <span flex="50">EMI</span>
+          <span flex>
+        <i class="icon-inr"></i>
+        <span> {{EMI(loan.rate)  | currency:"":"0"}}</span>
+          </span>
+        </div>
+        <div layout="row" layout-align="start center">
+          <span flex="50">Interest Rate</span>
+          <span flex>{{loan.rate}}% p.a.</span>
+        </div>
+        <div layout="row" layout-align="start center">
+          <span flex="50">Net Interest</span>
+          <span flex>
+        <i class="icon-inr"></i> {{netInterest(loan.rate)  | currency:"":"0"}}</span>
+        </div>
       </div>
     </div>
+
   </md-card>
 </md-content>
