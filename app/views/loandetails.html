@@ -10,13 +10,13 @@
         </div>
       </div>
 
-      <div class="details" flex style="font-size: 14px; color: #666666">
+      <div class="details" flex>
         <div layout="row" layout-align="start center">
           <i class="icon-bank" flex="10"></i>
           <span flex>{{loan.name}}</span>
         </div>
         <div layout="row" layout-align="start center">
-          <i class="icon-inr" flex="10"></i>
+          <i class="icon-inr" flex="10" style="align-self: flex-end;"></i>
           <span flex>{{principal | currency:"":"0"}}</span>
         </div>
         <div layout="row" layout-align="start center">
@@ -32,37 +32,37 @@
       </div>
     </div>
 
-    <md-divider inset></md-divider>
+<!--    <md-divider inset></md-divider>-->
 
-    <div class="emi-details" style="font-size: 14px; color: #666666">
+    <div class="emi-details">
       <section>
-        <md-subheader>EMI Details</md-subheader>
+        <h2>EMI Details</h2>
         <div class="emi" flex layout="column">
           <div layout="row" layout-align="start center">
             <!--            <span flex="10"></span>-->
-            <span flex="33">EMI</span>
+            <span class="emi-label" flex="33">EMI</span>
             <span flex><i class="icon-inr"></i> {{EMI() | currency:"":"0"}}</span>
           </div>
           <div layout="row" layout-align="start center">
             <!--            <span flex="10"></span>-->
-            <span flex="33">Net Interest</span>
+            <span class="emi-label" flex="33">Net Interest</span>
             <span flex><i class="icon-inr"></i> {{netInterest() | currency:"":"0"}}</span>
           </div>
           <div layout="row" layout-align="start center">
             <!--            <span flex="10"></span>-->
-            <span flex="33">Total Payable</span>
+            <span class="emi-label" flex="33">Total Payable</span>
             <span flex><i class="icon-inr"></i> {{netPayable() | currency:"":"0"}}</span>
           </div>
         </div>
       </section>
       <section>
-        <md-subheader>Interest vs Time</md-subheader>
+        <h2>Interest vs Time</h2>
         <div class="time-graph">
           <chartist class="ct-chart ct-golden-section" chartist-data="barData" chartist-chart-type="Bar" chartist-chart-options="barOptions" chartist-events="events"></chartist>
         </div>
       </section>
       <section>
-        <md-subheader>Get Loan</md-subheader>
+        <h2>Get Loan</h2>
         <div class="get-loan">
 
         </div>

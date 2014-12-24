@@ -39,7 +39,7 @@ angular.module('loanAdvisorApp')
         return parseInt($scope.netInterest()) + parseInt($scope.principal) + parseInt($scope.loan.processingFee * $scope.principal / 100);
       }
 
-      return $scope.netInterest() + $scope.principal;
+      return parseInt($scope.netInterest()) + parseInt($scope.principal);
     };
 
     $scope.events = {
@@ -63,13 +63,13 @@ angular.module('loanAdvisorApp')
       },
       axisY: {
         labelInterpolationFnc: function (value) {
-          return (value / 1000) + 'k';
+          return (value / 100000) + 'L';
         }
       }
     };
 
     var getTimes = function (t) {
-      var t = parseInt(((t) || $scope.time));
+      t = parseInt(((t) || $scope.time));
       if (t === 5) {
         return [t, t + 5, t + 10, t + 15, t + 20];
       } else if (t === 10) {
@@ -88,4 +88,21 @@ angular.module('loanAdvisorApp')
       $scope.barData.labels.push(value + ' yrs');
       $scope.barData.labels.splice(0,1);
     });
+
+    $scope.Amortize = function () {
+      var p = $scope.principal,
+        r = $scope.loan.rate / 1200,
+        t = $scope.time * 12,
+        currEMI = sharedProps.calculateEMI(p, r, t),
+        currIntPaybk, currPplPaybk, remPplPaybk;
+
+      //Amortization
+      for (var i = 0; i < t; i++) {
+        currIntPaybk = p * r;
+        currPplPaybk = currEMI - currIntPaybk;
+        remPplPaybk = p - currPplPaybk;
+        p = remPplPaybk;
+      }
+    };
+
   });

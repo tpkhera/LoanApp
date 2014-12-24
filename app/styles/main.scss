@@ -281,25 +281,48 @@ h3 {
 //LoanDetails
 //##################################################################
 .loan-details {
-  padding: 10px 16px 10px 16px;
+  padding: 16px;
   .details {
+    font-family: $Raleway;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.87);
+    i {
+      font-size: 16px;
+    }
     .icon-bank {
       padding-bottom: 2px;
     }
-    .icon-inr {
+    .icon-inr.compare {
       font-size: 14px;
     }
-    div {
-      padding-top: 1px;
-    }
+//    div {
+//      padding-top: 1px;
+//    }
   }
 }
 .emi-details {
+  font-family: $Raleway;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.87);
+  h2 {
+    font-family: '';
+    font-size: 0.9em;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.26);
+    padding: 0.9em 0px 0.9em 16px;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.12);
+    border-top: 2px solid #D3D3D3;
+    border-bottom: 1px solid #D3D3D3
+  }
   .emi {
-    padding: 0 16px 0 16px;
+    padding: 16px;
+    .emi-label {
+      font-weight: 500;
+    }
   }
   .time-graph {
-    padding: 0 16px 0 16px;
+    padding: 16px;
     .ct-chart {
       .ct-label.ct-horizontal {
         text-align: center;

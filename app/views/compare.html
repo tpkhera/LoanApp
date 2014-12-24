@@ -4,24 +4,24 @@
   <md-card ng-repeat="loan in loans" ng-click="openDetails(loan)">
 
     <div class="loan-details" layout="row" layout-align="center center">
-      <div class="bank-logo" flex="33" layout="row" layout-align="center end">
+      <div class="bank-logo" flex="33" layout="row" layout-align="start center">
         <div class="circle circle-solid" style="width: 80px;">
           <div class="circle-inner">
             <div>{{initial(loan.name)}}</div>
           </div>
         </div>
       </div>
-      <div class="details" flex style="font-family: 'Raleway'; font-weight: 500; color: #666666;">
-        <div layout="row" layout-align="start center">
-          <i class="icon-bank" flex="10"></i>
+      <div class="details" flex style="font-size:14px">
+        <div layout="row" layout-align="start center" style="font-weight: 500; font-size:16px;">
+          <i class="icon-bank" flex="15"></i>
           <span flex>{{loan.name}}</span>
         </div>
         <md-divider></md-divider>
         <div layout="row" layout-align="start center">
           <span flex="50">EMI</span>
           <span flex>
-        <i class="icon-inr"></i>
-        <span> {{EMI(loan.rate)  | currency:"":"0"}}</span>
+            <i class="icon-inr compare"></i>
+            <span> {{EMI(loan.rate)  | currency:"":"0"}}</span>
           </span>
         </div>
         <div layout="row" layout-align="start center">
@@ -31,7 +31,9 @@
         <div layout="row" layout-align="start center">
           <span flex="50">Net Interest</span>
           <span flex>
-        <i class="icon-inr"></i> {{netInterest(loan.rate)  | currency:"":"0"}}</span>
+            <i class="icon-inr compare"></i>
+            <span> {{netInterest(loan.rate)  | currency:"":"0"}}</span>
+          </span>
         </div>
       </div>
     </div>

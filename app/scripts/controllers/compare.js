@@ -33,21 +33,4 @@ angular.module('loanAdvisorApp')
       return $scope.EMI(loanRate) * $scope.time * 12 - $scope.principal;
     };
 
-    $scope.Amortize = function () {
-      var p = $scope.principal,
-        r = $scope.loan.rate / 1200,
-        t = $scope.time * 12,
-        currEMI = sharedProps.calculateEMI(p, r, t),
-        currIntPaybk, currPplPaybk, remPplPaybk;
-
-      //Amortization
-      for (var i = 0; i < t; i++) {
-        currIntPaybk = p * r;
-        currPplPaybk = currEMI - currIntPaybk;
-        remPplPaybk = p - currPplPaybk;
-        p = remPplPaybk;
-      }
-
-
-    };
   });
