@@ -1,0 +1,11 @@
+<toolbar></toolbar> <!--
+<md-toolbar class="shrinkable-toolbar" md-scroll-shrink>
+  <div class="md-toolbar-tools">
+    <span><i class="fa fa-rupee"></i></span>
+    <md-text-float class="shrinkable-toolbar-input" label="Loan Amount" ng-model="tempPref.principal"></md-text-float>
+    <span><i class="fa fa-clock-o"></i></span>
+    <md-text-float class="shrinkable-toolbar-input" label="Time Period" ng-model="tempPref.time"></md-text-float>
+    <md-button ng-click="update()">Apply</md-button>
+  </div>
+</md-toolbar>
+--> <div class="shrinkable-toolbar"> <div class="md-toolbar-tools"> <span><i class="icon-inr"></i></span> <md-text-float class="shrinkable-toolbar-input" label="Loan Amount" ng-model="tempPref.principal"></md-text-float> <span><i class="icon-clock"></i></span> <md-text-float class="shrinkable-toolbar-input" label="Time Period" ng-model="tempPref.time"></md-text-float> <md-button ng-click="update()">Apply</md-button> </div> </div> <md-content class="page-content-less"> <md-list class="search-results"> <md-item ng-repeat="loan in loans"> <md-item-content class="search-result"> <div class="md-tile-left" ng-click="openDetails(loan)"> <div class="circle circle-solid"> <div class="circle-inner"> <div>{{initial(loan.name)}}</div> </div> </div> </div> <div class="tile-emi md-tile-content" ng-click="openDetails(loan)"> <h3><i class="icon-inr"></i>{{EMI(loan.rate) | currency:"":"0"}}</h3> <p> per month </p> </div> <div class="md-tile-content" ng-click="openDetails(loan)"> <h3>{{loan.rate}}%</h3> <p ng-show="loan.processingFee"> +{{loan.processingFee}}% p. fee </p> </div> <div class="md-tile-right"> <md-checkbox ng-change="checkCount()" ng-model="loan.selected"></md-checkbox> </div> </md-item-content> <md-divider inset ng-if="!$last"></md-divider> </md-item> </md-list> <md-button ng-show="isChecked" class="md-fab md-primary bouncy-slide-top" ng-click="compare()"><i class="icon-view-carousel"></i></md-button> </md-content>

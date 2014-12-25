@@ -1,0 +1,69 @@
+[
+  {
+    "id": "HDFC_01",
+    "name": "HDFC Bank",
+    "rate": "10.15",
+    "rateType": "floating",
+    "processingFee": "0.35"
+  },
+  {
+    "id": "AXIS_01",
+    "name": "AXIS Bank",
+    "rate": "10.50",
+    "rateType": "floating",
+    "processingFee": "0.55"
+  },
+  {
+    "id": "PNB_01",
+    "name": "PNB",
+    "rate": "10.25",
+    "rateType": "floating",
+    "processingFee": "0.25"
+  },
+  {
+    "id": "ICICI_01",
+    "name": "ICICI",
+    "rate": "10.25",
+    "rateType": "floating",
+    "processingFee": "0.60"
+  },
+  {
+    "id": "ALHBD_01",
+    "name": "Allahabad Bank",
+    "rate": "10.25",
+    "rateType": "floating",
+    "processingFee": "0.45"
+  },
+  {
+    "id": "BOB_01",
+    "name": "Bank of Baroda",
+    "rate": "10.25",
+    "rateType": "floating",
+    "processingFee": "0.65"
+  },
+  {
+    "id": "BOI_01",
+    "name": "Bank of India",
+    "rate": "10.20",
+    "rateType": "floating"
+  },
+  {
+    "id": "BOM_01",
+    "name": "Bank of Maharashtra",
+    "rate": "10.40",
+    "rateType": "floating"
+  },
+  {
+    "id": "CANRA_01",
+    "name": "Canara Bank",
+    "rate": "10.20",
+    "rateType": "fixed",
+    "processingFee": "0.45"
+  },
+  {
+    "id": "SBI_01",
+    "name": "SBI",
+    "rate": "13",
+    "rateType": "floating"
+  }
+]
