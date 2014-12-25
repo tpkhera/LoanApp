@@ -49,6 +49,12 @@ angular.module('loanAdvisorApp')
             dx: data.x + data.space / 2
           });
         }
+        if(data.type === 'bar') {
+          data.group.append(new Chartist.Svg('text', {
+            x: data.x2 - 10,
+            y: data.y2 - 10,
+          }, 'ct-text').text(Math.round(data.value / 100000) + ' L'));
+        }
       }
     };
 
