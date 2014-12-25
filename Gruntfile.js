@@ -349,6 +349,10 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        }, {
+          expand: true,
+          dest: '<%= yeoman.dist %>',
+          src: ['config.xml', 'icon.png']
         }]
       },
       styles: {
@@ -374,6 +378,48 @@ module.exports = function (grunt) {
       ]
     },
 
+    // Phonegap build and download apk
+    "phonegap-build": {
+      debug: {
+        options: {
+          archive: 'platforms/www.zip',
+          appId: '1242998',
+          user: {
+            email: 'tpkhera@gmail.com'
+          },
+          download: {
+            android: 'platforms/LoanSmart-debug.apk'
+          }
+        }
+      },
+      release: {
+        options: {
+          isRepository: true,
+          appId: '1243864',
+          user: {
+            token: '2ef8f542d5753ad951188e4ded89168d5c17953a'
+          }
+        }
+      }
+    },
+
+    // Compress www folder to a zip
+    compress: {
+      main: {
+        options: {
+          archive: 'platforms/www.zip'
+        },
+        files: [
+          {
+            expand: true,
+            cwd: 'www/',
+            src: ['**'],
+            dest: 'www'
+          }
+        ]
+      }
+    },
+
     // Test settings
     karma: {
       unit: {
@@ -383,6 +429,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.registerTask('pb', ['compress', 'phonegap-build:debug']);
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
