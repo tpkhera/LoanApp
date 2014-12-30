@@ -24,6 +24,17 @@ html {
     }
   }
 }
+md-content {
+  &.page-content {
+    height: $ContentHeight1;
+    &-less {
+      height: $ContentHeight2;
+    }
+  }
+}
+//##################################################################
+//Toolbar
+//##################################################################
 md-toolbar.app-toolbar {
   background-color: $AppColor;
   z-index: 5;
@@ -42,17 +53,29 @@ md-toolbar.app-toolbar {
     }
   }
 }
-md-content {
-  &.page-content {
-    height: $ContentHeight1;
-    &-less {
-      height: $ContentHeight2;
-    }
-  }
-}
 .md-sidenav-left {
-  i {
-    font-size: 24px;
+  .md-toolbar-tools {
+    padding: 0 16px;
+  }
+
+  md-content {
+    padding-left: 0px;
+    i {
+      font-size: 24px;
+      &.icon-automobile,
+      &.icon-calculator {
+        font-size: 20px;
+      }
+    }
+    span {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .md-button {
+      color: rgba(0, 0, 0, 0.56);
+      padding: 8px 0 8px 0;
+      text-transform: none;
+    }
   }
 }
 //##################################################################
