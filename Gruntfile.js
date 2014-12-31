@@ -379,8 +379,8 @@ module.exports = function (grunt) {
     },
 
     // Phonegap build and download apk
-    "phonegap-build": {
-      debug: {
+    'phonegap-build': {
+      main: {
         options: {
           archive: 'platforms/www.zip',
           appId: '1242998',
@@ -389,15 +389,6 @@ module.exports = function (grunt) {
           },
           download: {
             android: 'platforms/LoanSmart-debug.apk'
-          }
-        }
-      },
-      release: {
-        options: {
-          isRepository: true,
-          appId: '1243864',
-          user: {
-            token: '2ef8f542d5753ad951188e4ded89168d5c17953a'
           }
         }
       }
@@ -429,7 +420,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('pb', ['compress', 'phonegap-build:debug']);
+  grunt.registerTask('pb', ['build', 'compress', 'phonegap-build']);
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
