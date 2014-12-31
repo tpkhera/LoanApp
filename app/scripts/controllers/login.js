@@ -32,7 +32,6 @@ angular.module('loanAdvisorApp')
             $scope.user.password = '';
           } else {
             $scope.showSimpleToast('Invalid Email ID!');
-            console.error(error);
             $scope.user.email = '';
             $scope.user.password = '';
           }
@@ -52,8 +51,8 @@ angular.module('loanAdvisorApp')
           password: $scope.user.password
         });
 
-      loginPromise.then(function (authData) {
-        deferred.resolve(authData);
+      loginPromise.then(function (response) {
+        deferred.resolve(response);
       }).catch(function (error) {
         deferred.reject(error);
       });
