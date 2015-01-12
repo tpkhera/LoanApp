@@ -20,8 +20,8 @@ angular.module('loanAdvisorApp')
       });
 
     $scope.userPref = {
-      principal: $rootScope.principal === undefined ? '2500000' : $rootScope.principal,
-      time: $rootScope.time === undefined ? '15' : $rootScope.time
+      principal: $rootScope.principal === undefined ? 2500000 : $rootScope.principal,
+      time: $rootScope.time === undefined ? 15 : $rootScope.time
     };
 
     $scope.tempPref = {
