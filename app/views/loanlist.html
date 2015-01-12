@@ -1,23 +1,13 @@
 <toolbar></toolbar>
 
-<!--
-<md-toolbar class="shrinkable-toolbar" md-scroll-shrink>
-  <div class="md-toolbar-tools">
-    <span><i class="fa fa-rupee"></i></span>
-    <md-text-float class="shrinkable-toolbar-input" label="Loan Amount" ng-model="tempPref.principal"></md-text-float>
-    <span><i class="fa fa-clock-o"></i></span>
-    <md-text-float class="shrinkable-toolbar-input" label="Time Period" ng-model="tempPref.time"></md-text-float>
-    <md-button ng-click="update()">Apply</md-button>
-  </div>
-</md-toolbar>
--->
+<!--<md-toolbar class="shrinkable-toolbar" md-scroll-shrink></md-toolbar>-->
 
 <div class="shrinkable-toolbar">
   <div class="md-toolbar-tools">
     <span><i class="icon-inr"></i></span>
-    <md-text-float class="shrinkable-toolbar-input" label="Loan Amount" ng-model="tempPref.principal"></md-text-float>
+    <md-text-float class="shrinkable-toolbar-input" type="number" label="Loan Amount" ng-model="tempPref.principal"></md-text-float>
     <span><i class="icon-clock"></i></span>
-    <md-text-float class="shrinkable-toolbar-input" label="Time Period" ng-model="tempPref.time"></md-text-float>
+    <md-text-float class="shrinkable-toolbar-input" type="number" label="Time Period" ng-model="tempPref.time"></md-text-float>
     <md-button ng-click="update()">Apply</md-button>
   </div>
 </div>
@@ -36,7 +26,10 @@
         </div>
 
         <div class="tile-emi md-tile-content" ng-click="openDetails(loan)">
-          <h3><i class="icon-inr"></i>{{EMI(loan.rate) | currency:"":"0"}}</h3>
+          <h3 layout="row" layout-align="center center">
+            <i class="icon-inr"></i>
+            <span>{{EMI(loan.rate) | currency:"":"0"}}</span>
+          </h3>
           <p>
             per month
           </p>

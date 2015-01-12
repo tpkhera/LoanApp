@@ -32,7 +32,7 @@
       </div>
     </div>
 
-<!--    <md-divider inset></md-divider>-->
+    <!--    <md-divider inset></md-divider>-->
 
     <div class="emi-details">
       <section>
@@ -41,17 +41,26 @@
           <div layout="row" layout-align="start center">
             <!--            <span flex="10"></span>-->
             <span class="emi-label" flex="33">EMI</span>
-            <span flex><i class="icon-inr"></i> {{EMI() | currency:"":"0"}}</span>
+            <span flex layout="row">
+              <i class="icon-inr"></i>
+              <span>{{EMI() | currency:"":"0"}}</span>
+            </span>
           </div>
           <div layout="row" layout-align="start center">
             <!--            <span flex="10"></span>-->
             <span class="emi-label" flex="33">Net Interest</span>
-            <span flex><i class="icon-inr"></i> {{netInterest() | currency:"":"0"}}</span>
+            <span flex layout="row">
+              <i class="icon-inr"></i>
+              <span>{{netInterest() | currency:"":"0"}}</span>
+            </span>
           </div>
           <div layout="row" layout-align="start center">
             <!--            <span flex="10"></span>-->
             <span class="emi-label" flex="33">Total Payable</span>
-            <span flex><i class="icon-inr"></i> {{netPayable() | currency:"":"0"}}</span>
+            <span flex layout="row">
+              <i class="icon-inr"></i>
+              <span>{{netPayable() | currency:"":"0"}}</span>
+            </span>
           </div>
         </div>
       </section>
@@ -63,8 +72,8 @@
       </section>
       <section>
         <h2>Get Loan</h2>
-        <div class="get-loan">
-
+        <div class="get-loan" layout="column" layout-align="center center">
+          <md-button class="md-primary md-raised">Apply for Loan</md-button>
         </div>
       </section>
     </div>
