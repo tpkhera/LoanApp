@@ -9,7 +9,8 @@
  */
 angular.module('loanAdvisorApp')
   .controller('HomeCtrl', function ($scope, $location) {
-  	$scope.goTo = function(category) {
-  		$location.path('/loanlist/' + category);
-  	};
+    $scope.goTo = function (category) {
+      var navTo = category === 'emicalc' ? '/emicalc' : '/loanlist/' + category;
+      $location.path(navTo);
+    };
   });
