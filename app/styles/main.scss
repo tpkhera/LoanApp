@@ -3,7 +3,6 @@
 @import "fonts.scss";
 @import "animation.scss";
  $Raleway:'Raleway';
- $Roboto:'Roboto';
  $AppColor:#2196F3;
  $ContentHeight1:91.25%;
  $ContentHeight2:83.75%;
@@ -128,7 +127,7 @@ md-content.login {
     padding: 20px 0 20px 0;
     .md-button {
       color: white;
-      font-family: $Roboto;
+      font-family: sans-serif;
       font-weight: 500;
       &.skip {
         color: #1565C0;
@@ -154,8 +153,7 @@ md-content.login {
     }
   }
   .grid {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 12px;
     .home-col {
       text-align: center;
       font-family: $Raleway;
@@ -212,20 +210,25 @@ md-content.login {
     }
   }
 }
-md-divider[inset] {
-  margin-left: 5%;
-  margin-right: 5%;
-}
-.md-tile-content p,
-h3 {
-  font-family: $Raleway;
-  text-align: center;
-}
 .search-result {
   padding-left: 16px;
   i {
     color: #666666;
-    padding-right: 3px;
+    padding-right: 4px;
+    align-self: flex-end;
+  }
+  .md-tile-left {
+    margin-right: 0px;
+  }
+  .md-tile-content p,
+  h3 {
+    font-family: $Raleway;
+    text-align: center;
+    font-weight: 500;
+  }
+  md-divider[inset] {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 }
 .md-fab {
@@ -274,7 +277,7 @@ h3 {
   line-height: 1em;
   font-size: 2em;
   color: white;
-  font-family: $Roboto;
+  font-family: serif;
   font-weight: 700;
 }
 //.circle-text:after {
@@ -328,7 +331,7 @@ h3 {
   font-size: 14px;
   color: rgba(0, 0, 0, 0.87);
   h2 {
-    font-family: '';
+    font-family: sans-serif;
     font-size: 0.9em;
     font-weight: 700;
     color: rgba(0, 0, 0, 0.26);
@@ -343,6 +346,10 @@ h3 {
     .emi-label {
       font-weight: 500;
     }
+    i {
+      align-self: flex-end;
+      padding-right: 4px;
+    }
   }
   .time-graph {
     padding: 16px;
@@ -353,6 +360,14 @@ h3 {
       .ct-series .ct-bar {
         stroke-width: 20px;
       }
+    }
+  }
+  .get-loan {
+    padding: 16px;
+    .md-button {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 16px;
     }
   }
 }
