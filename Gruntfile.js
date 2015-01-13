@@ -378,22 +378,6 @@ module.exports = function (grunt) {
       ]
     },
 
-    // Phonegap build and download apk
-    'phonegap-build': {
-      main: {
-        options: {
-          archive: 'platforms/www.zip',
-          appId: '1242998',
-          user: {
-            email: 'tpkhera@gmail.com'
-          },
-          download: {
-            android: 'platforms/LoanSmart-debug.apk'
-          }
-        }
-      }
-    },
-
     // Compress www folder to a zip
     compress: {
       main: {
@@ -411,6 +395,33 @@ module.exports = function (grunt) {
       }
     },
 
+    // Phonegap build and download apk
+    'phonegap-build': {
+      main: {
+        options: {
+          archive: 'platforms/www.zip',
+          appId: '1242998',
+          user: {
+            email: 'tpkhera@gmail.com'
+          },
+          download: {
+            android: 'platforms/LoanSmart-debug.apk'
+          }
+        }
+      }
+    },
+
+    //Install apk on device thru adb
+    shell: {
+      target: {
+        command: [
+          'adb connect 192.168.3.4',
+          'adb install -r platforms/LoanSmart-debug.apk',
+          'adb shell am start -n com.phonegap.loansmart/.LoanSmart'
+        ].join('&&')
+      }
+    },
+
     // Test settings
     karma: {
       unit: {
@@ -420,7 +431,7 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('pb', ['build', 'compress', 'phonegap-build']);
+  grunt.registerTask('pb', ['build', 'compress', 'phonegap-build', 'shell']);
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
