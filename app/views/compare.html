@@ -11,15 +11,15 @@
           </div>
         </div>
       </div>
-      <div class="details" flex style="font-size:14px">
-        <div layout="row" layout-align="start center" style="font-weight: 500; font-size:16px;">
+      <div class="details compare" flex>
+        <div layout="row" layout-align="start center" style="font-size:18px;">
           <i class="icon-bank" flex="15"></i>
           <span flex>{{loan.name}}</span>
         </div>
         <md-divider></md-divider>
         <div layout="row" layout-align="start center">
           <span flex="50">EMI</span>
-          <span flex>
+          <span flex layout="row">
             <i class="icon-inr compare"></i>
             <span> {{EMI(loan.rate)  | currency:"":"0"}}</span>
           </span>
@@ -30,7 +30,7 @@
         </div>
         <div layout="row" layout-align="start center">
           <span flex="50">Net Interest</span>
-          <span flex>
+          <span flex layout="row">
             <i class="icon-inr compare"></i>
             <span> {{netInterest(loan.rate)  | currency:"":"0"}}</span>
           </span>
